@@ -1,14 +1,26 @@
-<section class="inner-page">
+<section>
 	<div class="container">
-		<form>
-			<h2>Log In</h2>
-			<div class="form-group">
-				<label for="inputEmail" class="sr-only">Email address</label>
-				<input type="email" id="inputEmail" class="form-control" ng-model="lc.inputEmail" placeholder="Email address" required autofocus>
-				<label for="inputPassword" class="sr-only">Password</label>
-				<input type="password" id="inputPassword" class="form-control" ng-model="lc.inputPassword" placeholder="Password" required>
-			</div>
-			<button class="btn btn-lg btn-primary btn-block" ng-click="lc.login()">Sign in</button>
-		</form>
+		<h2>Log In</h2>
+		<form name="loginForm" id="loginForm">
+			<fieldset class="input-group-vertical">
+				<div class="form-group">
+					<label for="inputEmail" class="sr-only">Email address</label>
+					<input type="email" id="inputEmail" name="inputEmail" class="form-control" ng-model="lc.inputEmail" placeholder="Email address" required autofocus>
+				</div>
+				<div class="form-group">
+					<label for="inputPassword" class="sr-only">Password</label>
+					<input type="password" id="inputPassword" class="form-control" ng-model="lc.inputPassword" placeholder="Password" required>
+				</div>
+			</fieldset>
+			<button class="btn btn-lg btn-primary btn-block" ng-click="lc.login()" ng-disabled="loginForm.$invalid">Sign in</button>
+		</form><br>
+		<div class="alert alert-success" ng-show="lc.success">
+			{{lc.successMessage}}
+		</div>
+		<div class="alert alert-danger" ng-show="lc.error">
+			{{lc.error}}
+		</div>
+		<hr>
+		<a href="/reset-password">I forgot my password</a>
 	</div>
 </section>

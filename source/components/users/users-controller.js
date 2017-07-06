@@ -3,7 +3,7 @@ export default function ($http, appConfig) {
 
     uc.users = {
         sort: {
-            column: 'lastName',
+            column: 'user_name',
             descending: false
         }
     };

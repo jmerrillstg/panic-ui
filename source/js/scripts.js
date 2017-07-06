@@ -1,4 +1,4 @@
-var app = angular.module('theSetApp', ['ngRoute', 'ngSanitize', 'panicUi.config']);
+var app = angular.module('panicUiApp', ['ngRoute', 'ngSanitize', 'panicUi.config']);
 
 import navMenuController from '../components/common/nav-menu/nav-menu-controller';
 import navMenu from '../components/common/nav-menu/nav-menu-directive';
@@ -34,6 +34,12 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'changePasswordController',
             controllerAs: 'cpc',
             activeTab: 'account'
+        })
+        .when('/reset-password', {
+            templateUrl: 'components/login/reset-password-template.html',
+            controller: 'loginController',
+            controllerAs: 'lc',
+            activeTab: 'login'
         })
         .when('/login', {
             templateUrl: 'components/login/login-template.html',
@@ -95,7 +101,9 @@ app.run(function ($rootScope, $location, loginService) {
                 }
             });
         } else {
-            $location.path('/login');
+            if ($location.path().includes('reset-password') === false) {
+                $location.path('/login');
+            }
         }
     });
 });

@@ -1,7 +1,8 @@
 @import '../components/common/page-footer/page-footer-styles';
+@import '../components/login/login-styles';
 
 body {
-  padding-top: 30px;
+    padding-top: 30px;
 }
 
 section {
@@ -9,11 +10,99 @@ section {
     padding-top: 20px;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .footer {
+.sort-header {
+    font-weight: bold;
+}
+
+.sort-header:hover {
+    cursor: pointer;
+}
+
+.sort-true::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-bottom: 4px dashed;
+    border-bottom: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: " ";
+}
+
+.sort-false::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-top: 4px dashed;
+    border-top: 4px solid\9;
+    border-right: 4px solid transparent;
+    border-left: 4px solid transparent;
+    content: " ";
+}
+
+.row-bordered {
+    border-bottom: 1px solid #ccc;
+}
+
+.row-bordered:last-of-type {
+    border-bottom: 0;
+}
+
+.grid-header {
+    background-color: #ccc;
+}
+
+.panel-default {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.panel-table {
     padding-left: 0;
     padding-right: 0;
-  }
+}
+
+table {
+    width: 100%;
+    font-size: 12px;
+}
+
+th, td {
+    padding: 0 15px 0 15px;
+}
+
+th {
+    white-space: nowrap;
+}
+
+footer, .text-response {
+    font-size: 9px;
+}
+
+.odd-row, .even-row, .text-response {
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin: 2px;
+    border-radius: 4px;
+}
+
+.odd-row {
+    background-color: #8FCAE7;
+}
+
+.even-row {
+  background-color: #B5B6B3;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+    /* Remove the padding we set earlier */
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }

@@ -2,18 +2,20 @@
 <section class="inner-page" ng-if="isAdmin">
     <div class="container">
         <h1>Edit User</h1>
+        <strong>User Created: </strong>{{euc.user.user_created_time}}<br>
+        <strong>Last Logged In: </strong>{{euc.user.last_login_time}}<br><br>
         <form>
             <div class="row">
                 <div class="col-xs-12">
                     <div class="form-group">
                         <label for="firstName">Name</label>
-                        <input type="text" ng-model="euc.user.source_name" id="firstName" class="form-control">
+                        <input type="text" ng-model="euc.user.user_name" id="firstName" class="form-control">
                     </div>
                 </div>
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" ng-model="euc.user.source_email" id="email" class="form-control">
+                <input type="email" ng-model="euc.user.user_email" id="email" class="form-control">
             </div>
             <div class="form-group">
                 <label for="userLevel">User Level</label>
