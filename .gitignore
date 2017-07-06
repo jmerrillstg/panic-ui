@@ -1,0 +1,8 @@
+public/
+node_modules/
+.git/
+.idea/
+panic-ui.iml
+lib/
+bundle.js
+.DS_Store

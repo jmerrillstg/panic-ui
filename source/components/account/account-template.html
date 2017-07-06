@@ -1,0 +1,30 @@
+<section class="inner-page">
+    <div class="container">
+        <h2>Account</h2>
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="sourceName">Name</label>
+                        <input type="text" ng-model="acc.profile.source_name" id="sourceName" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" ng-model="acc.profile.source_email" id="email" class="form-control">
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-primary" ng-click="acc.updateUser()">Save Changes</button>
+                </div>
+            </div>
+        </form><br>
+        <div class="alert alert-success" ng-show="acc.success">
+            {{acc.successMessage}}
+        </div>
+        <div class="alert alert-danger" ng-show="acc.error">
+            {{acc.error}}
+        </div>
+    </div>
+</section>

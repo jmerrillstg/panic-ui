@@ -1,0 +1,29 @@
+<section class="inner-page" ng-if="isAdmin">
+    <div class="container">
+        <h1>Users</h1>
+        <div class="panel panel-default">
+            <div class="row grid-header">
+                <div ng-class="uc.selectedCls(uc.users,'source_name')" class="col-xs-2">
+                    <a href="#" ng-click="uc.changeSorting(uc.users,'source_name')" class="sort-header">Name</a>
+                </div>
+                <div ng-class="uc.selectedCls(uc.users,'source_email')" class="col-xs-4">
+                    <a href="#" ng-click="uc.changeSorting(uc.users,'source_email')" class="sort-header">Email</a>
+                </div>
+                <div ng-class="uc.selectedCls(uc.users,'user_level')" class="col-xs-2">
+                    <a href="#" ng-click="uc.changeSorting(uc.users,'user_level')" class="sort-header">Level</a>
+                </div>
+            </div>
+            <div class="row row-bordered" ng-repeat="user in uc.users.data | orderBy: uc.users.sort.column:uc.users.sort.descending">
+                <div class="col-xs-2">
+                    <a href="/edit-user/{{user.source_id}}">{{user.source_name}}</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="/edit-user/{{user.source_id}}">{{user.source_email}}</a>
+                </div>
+                <div class="col-xs-2">
+                    <a href="/edit-user/{{user.source_id}}">{{user.user_level}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

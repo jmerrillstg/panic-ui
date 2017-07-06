@@ -1,0 +1,19 @@
+@import '../components/common/page-footer/page-footer-styles';
+
+body {
+  padding-top: 30px;
+}
+
+section {
+    padding-bottom: 20px;
+    padding-top: 20px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  /* Remove the padding we set earlier */
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

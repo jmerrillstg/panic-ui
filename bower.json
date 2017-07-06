@@ -1,0 +1,25 @@
+{
+  "name": "panic-ui",
+  "description": "",
+  "main": "index.html",
+  "authors": [
+    "Jason Merrill <jason.merrill@stgconsulting.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/jmerrillstg/panic-ui",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/lib/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.6.3",
+    "angular-route": "^1.6.3",
+    "bootstrap": "^3.3.7",
+    "angular-sanitize": "^1.6.4"
+  }
+}

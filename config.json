@@ -1,0 +1,12 @@
+{
+    "dev" : {
+        "appConfig": {
+            "apiUrl": "http://localhost:3001/api"
+        }
+    },
+    "prod" : {
+        "appConfig": {
+            "apiUrl": "http://panic.stgconsulting.com:3001/api"
+        }
+    }
+}

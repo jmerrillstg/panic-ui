@@ -1,0 +1,44 @@
+<delete-user-modal></delete-user-modal>
+<section class="inner-page" ng-if="isAdmin">
+    <div class="container">
+        <h1>Edit User</h1>
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="firstName">Name</label>
+                        <input type="text" ng-model="euc.user.source_name" id="firstName" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" ng-model="euc.user.source_email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="userLevel">User Level</label>
+                <select ng-model="euc.user.user_level" id="userLevel" class="form-control">
+                    <option value="admin">Admin</option>
+                    <option value="user">User</option>
+                </select>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-left">
+                    <button class="btn btn-primary" ng-click="euc.updateUser()">Save Changes</button>
+                </div>
+                <div class="col-xs-4 text-center">
+                    <button class="btn btn-info" ng-click="euc.resetPassword(euc.user.email)">Reset Password</button>
+                </div>
+                <div class="col-xs-4 text-right">
+                    <button class="btn btn-danger" ng-click="euc.initiateModal()">Delete User</button>
+                </div>
+            </div>
+        </form><br>
+        <div class="alert alert-success" ng-show="euc.success">
+            {{euc.successMessage}}
+        </div>
+        <div class="alert alert-danger" ng-show="euc.error">
+            {{euc.error}}
+        </div>
+    </div>
+</section>
