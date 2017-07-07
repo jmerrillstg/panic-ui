@@ -6,7 +6,7 @@
     },
     "prod" : {
         "appConfig": {
-            "apiUrl": "http://panic.stgconsulting.com:3001/api"
+            "apiUrl": "http://10.117.3.112:3001/api"
         }
     }
 }
