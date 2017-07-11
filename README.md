@@ -38,10 +38,10 @@ AllowOverride All
 
 ## Development
 
-To use browsersync create an apache vhost with the hostname of **localhost.panic-api** with the webroot pointing to the **/public** directory of the project running on port 80 on your local machine and add the following entry to your hosts file
+To use browsersync create an apache vhost with the hostname of **localhost.panic** with the webroot pointing to the **/public** directory of the project running on port 80 on your local machine and add the following entry to your hosts file
 
 ```
-127.0.0.1 localhost.panic-api
+127.0.0.1 localhost.panic
 ```
 Once this apache setup is complete you can run the default gulp task to enable browsersync.  This will automatically refresh your browser and update the **/public** directory when changes are made to the files under **/source**
 
