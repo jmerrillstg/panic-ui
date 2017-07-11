@@ -1,5 +1,21 @@
-<section id="main-section">
+<section id="main-section" ng-if="!isAdmin">
     <div class="container">
         <img src="images/Panic-Button-300x290.jpg" class="img-circle img-responsive">
+    </div>
+</section>
+<section id="main-section" ng-if="isAdmin">
+    <div class="container">
+        <h1>Edit Panic Button Message</h1>
+        <div class="form-group">
+            <label for="message">Message</label>
+            <textarea style="height:300px;" class="form-control" id="message" ng-model="hc.message" required></textarea>
+        </div>
+        <button class="btn btn-primary" ng-click="hc.updateMessage()">Update Message</button><br><br>
+        <div class="alert alert-success" ng-show="hc.success">
+            {{hc.successMessage}}
+        </div>
+        <div class="alert alert-danger" ng-show="hc.error">
+            {{hc.error}}
+        </div>
     </div>
 </section>
