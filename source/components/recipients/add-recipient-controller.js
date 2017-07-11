@@ -17,7 +17,7 @@ export default function ($http, appConfig) {
             arc.error = '';
             arc.recipient.first_name = '';
             arc.recipient.last_name = '';
-            arc.recipient.recipient_level = '';
+            arc.recipient.recipient_phone = '';
             arc.recipient.email = '';
         },
         function(response) {
