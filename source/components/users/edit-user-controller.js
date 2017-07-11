@@ -15,7 +15,7 @@ export default function ($http, $routeParams, loginService, appConfig) {
         $http({
             method: 'PUT',
             url: appConfig.apiUrl+'/user/'+$routeParams.id,
-            data: {source_name: euc.user.source_name, user_level: euc.user.user_level, source_email: euc.user.source_email},
+            data: {user_name: euc.user.user_name, user_level: euc.user.user_level, user_email: euc.user.user_email},
             headers : {'Content-Type': 'application/json'}
         })
         .then(function() {

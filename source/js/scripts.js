@@ -1,4 +1,4 @@
-var app = angular.module('panicUiApp', ['ngRoute', 'ngSanitize', 'panicUi.config']);
+var app = angular.module('panicUiApp', ['ngRoute', 'ngSanitize', 'angularMoment', 'panicUi.config']);
 
 import navMenuController from '../components/common/nav-menu/nav-menu-controller';
 import navMenu from '../components/common/nav-menu/nav-menu-directive';
@@ -13,6 +13,10 @@ import usersController from '../components/users/users-controller';
 import addUserController from '../components/users/add-user-controller';
 import editUserController from '../components/users/edit-user-controller';
 import deleteUserModal from '../components/users/delete-user-modal-directive';
+import recipientsController from '../components/recipients/recipients-controller';
+import addRecipientController from '../components/recipients/add-recipient-controller';
+import editRecipientController from '../components/recipients/edit-recipient-controller';
+import deleteRecipientModal from '../components/recipients/delete-recipient-modal-directive';
 
 app.config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
@@ -65,6 +69,24 @@ app.config(function ($routeProvider, $locationProvider) {
             controllerAs: 'euc',
             activeTab: 'users'
         })
+        .when('/recipients', {
+            templateUrl: 'components/recipients/recipients-template.html',
+            controller: 'recipientsController',
+            controllerAs: 'rc',
+            activeTab: 'recipients'
+        })
+        .when('/add-recipient', {
+            templateUrl: 'components/recipients/add-recipient-template.html',
+            controller: 'addRecipientController',
+            controllerAs: 'arc',
+            activeTab: 'recipients'
+        })
+        .when('/edit-recipient/:id', {
+            templateUrl: 'components/recipients/edit-recipient-template.html',
+            controller: 'editRecipientController',
+            controllerAs: 'erc',
+            activeTab: 'recipients'
+        })
         .otherwise({
             redirectTo: '/home'
         });
@@ -83,6 +105,10 @@ app.controller('usersController', usersController);
 app.controller('addUserController', addUserController);
 app.controller('editUserController', editUserController);
 app.directive('deleteUserModal', deleteUserModal);
+app.controller('recipientsController', recipientsController);
+app.controller('addRecipientController', addRecipientController);
+app.controller('editRecipientController', editRecipientController);
+app.directive('deleteRecipientModal', deleteRecipientModal);
 
 app.config(function($httpProvider) {
     $httpProvider.interceptors.push('authenticationInterceptor');
