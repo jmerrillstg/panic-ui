@@ -2,8 +2,8 @@
 <section class="inner-page" ng-if="isAdmin">
     <div class="container">
         <h1>Edit User</h1>
-        <strong>User Created: </strong>{{euc.user.user_created_time}}<br>
-        <strong>Last Logged In: </strong>{{euc.user.last_login_time}}<br><br>
+        <strong>User Created: </strong>{{euc.user.user_created_time | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}<br>
+        <strong>Last Logged In: </strong>{{euc.user.last_login_time | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}<br><br>
         <form>
             <div class="row">
                 <div class="col-xs-12">
@@ -29,7 +29,7 @@
                     <button class="btn btn-primary" ng-click="euc.updateUser()">Save Changes</button>
                 </div>
                 <div class="col-xs-4 text-center">
-                    <button class="btn btn-info" ng-click="euc.resetPassword(euc.user.email)">Reset Password</button>
+                    <button class="btn btn-info" ng-click="euc.resetPassword(euc.user.user_email)">Reset Password</button>
                 </div>
                 <div class="col-xs-4 text-right">
                     <button class="btn btn-danger" ng-click="euc.initiateModal()">Delete User</button>

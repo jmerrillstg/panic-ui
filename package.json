@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gutbomb/panic-ui.git"
+    "url": "git+https://github.com/jmerrillstg/panic-ui.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/gutbomb/panic-ui/issues"
+    "url": "https://github.com/jmerrillstg/panic-ui/issues"
   },
-  "homepage": "https://github.com/gutbomb/panic-ui#readme",
+  "homepage": "https://github.com/jmerrillstg/panic-ui#readme",
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-eslint": "^7.2.1",
@@ -36,7 +36,6 @@
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-scp2": "^0.2.0",
     "gulp-util": "^3.0.8",
     "gulp-watch": "^4.3.11",
     "jshint": "^2.9.4",

@@ -14,7 +14,7 @@ export default function ($http, $rootScope, appConfig) {
     function updateUser() {
         $http({
             method: 'PUT',
-            url: appConfig.apiUrl+'/profile/'+$rootScope.userId,
+            url: appConfig.apiUrl+'/profile',
             data: acc.profile,
             headers : {'Content-Type': 'application/json'}
         })
