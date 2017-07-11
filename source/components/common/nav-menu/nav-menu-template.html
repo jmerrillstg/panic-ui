@@ -11,7 +11,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li ng-class="{active: $route.current.activeTab == 'home'}"><a href="/home">Home</a></li>
+                <li ng-class="{active: $route.current.activeTab == 'home'}" ng-if="isLoggedIn"><a href="/home">Home</a></li>
                 <li class="dropdown" ng-if="isLoggedIn" ng-class="{active: $route.current.activeTab == 'recipients'}">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Recipients <span class="caret"></span></a>
                     <ul class="dropdown-menu">
@@ -26,6 +26,7 @@
                         <li><a href="/add-user">Add User</a></li>
                     </ul>
                 </li>
+                <li ng-class="{active: $route.current.activeTab == 'log'}" ng-if="isLoggedIn && isAdmin"><a href="/log">Log</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown" ng-if="isLoggedIn" ng-class="{active: $route.current.activeTab == 'account'}">

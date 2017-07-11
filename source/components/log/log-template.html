@@ -1,0 +1,15 @@
+<section id="main-section" ng-if="isAdmin">
+    <div class="container">
+        <h1>Log</h1>
+        <p><strong>Button Presses:</strong> {{lgc.log_count}}</p>
+        <div class="row" ng-repeat="entry in lgc.log">
+            {{entry.log_time | amDateFormat:'dddd, MMMM Do YYYY, h:mm:ss a'}}
+        </div>
+        <div class="alert alert-success" ng-show="hc.success">
+            {{lgc.successMessage}}
+        </div>
+        <div class="alert alert-danger" ng-show="hc.error">
+            {{lgc.error}}
+        </div>
+    </div>
+</section>

@@ -5,6 +5,7 @@ import navMenu from '../components/common/nav-menu/nav-menu-directive';
 import pageFooter from '../components/common/page-footer/page-footer-directive';
 import homeController from '../components/home/home-controller';
 import accountController from '../components/account/account-controller';
+import logController from '../components/log/log-controller';
 import loginController from '../components/login/login-controller';
 import loginService from '../components/login/login-service';
 import authenticationInterceptor from '../components/login/authentication-interceptor-service';
@@ -44,6 +45,12 @@ app.config(function ($routeProvider, $locationProvider) {
             controller: 'loginController',
             controllerAs: 'lc',
             activeTab: 'login'
+        })
+        .when('/log', {
+            templateUrl: 'components/log/log-template.html',
+            controller: 'logController',
+            controllerAs: 'lgc',
+            activeTab: 'log'
         })
         .when('/login', {
             templateUrl: 'components/login/login-template.html',
@@ -97,6 +104,7 @@ app.directive('navMenu', navMenu);
 app.directive('pageFooter', pageFooter);
 app.controller('homeController', homeController);
 app.controller('accountController', accountController);
+app.controller('logController', logController);
 app.controller('loginController', loginController);
 app.factory('loginService', loginService);
 app.factory('authenticationInterceptor', authenticationInterceptor);
