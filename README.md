@@ -1,6 +1,6 @@
 # Panic UI
 
-This application provides an interface to manage recipients and messages for the Raspberry Pi Panic Button
+This application provides an interface to manage recipients and messages for the Raspberry Pi Panic Button.  The API is also required and is located at https://github.com/jmerrillstg/panic-api
 
 ## Installation
 
