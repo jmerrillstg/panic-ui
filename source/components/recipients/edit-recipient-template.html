@@ -1,0 +1,36 @@
+<delete-recipient-modal></delete-recipient-modal>
+<section class="inner-page" ng-if="isAdmin">
+    <div class="container">
+        <h1>Edit Recipient</h1>
+        <form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <label for="firstName">Name</label>
+                        <input type="text" ng-model="erc.recipient.recipient_name" id="firstName" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" ng-model="erc.recipient.recipient_email" id="email" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="recipientPhone">Recipient Phone (no dashes or spaces.  include area code)</label>
+                <input type="text" ng-model="erc.recipient.recipient_phone" id="recipientPhone" class="form-control">
+            </div>
+            <div class="row">
+                <div class="col-xs-4 text-left">
+                    <button class="btn btn-primary" ng-click="erc.updateRecipient()">Save Changes</button>
+                    <button class="btn btn-danger" ng-click="erc.initiateModal()">Delete Recipient</button>
+                </div>
+            </div>
+        </form><br>
+        <div class="alert alert-success" ng-show="erc.success">
+            {{erc.successMessage}}
+        </div>
+        <div class="alert alert-danger" ng-show="erc.error">
+            {{erc.error}}
+        </div>
+    </div>
+</section>

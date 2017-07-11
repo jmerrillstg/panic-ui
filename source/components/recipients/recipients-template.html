@@ -1,0 +1,29 @@
+<section class="inner-page">
+    <div class="container">
+        <h1>Recipients</h1>
+        <div class="panel panel-default">
+            <div class="row grid-header">
+                <div ng-class="rc.selectedCls(rc.recipients,'recipient_name')" class="col-xs-2">
+                    <a href="#" ng-click="rc.changeSorting(rc.recipients,'recipient_name')" class="sort-header">Name</a>
+                </div>
+                <div ng-class="rc.selectedCls(rc.recipients,'recipient_email')" class="col-xs-4">
+                    <a href="#" ng-click="rc.changeSorting(rc.recipients,'recipient_email')" class="sort-header">Email</a>
+                </div>
+                <div ng-class="rc.selectedCls(rc.recipients,'recipient_phone')" class="col-xs-2">
+                    <a href="#" ng-click="rc.changeSorting(rc.recipients,'recipient_phone')" class="sort-header">Phone</a>
+                </div>
+            </div>
+            <div class="row row-bordered" ng-repeat="recipient in rc.recipients.data | orderBy: rc.recipients.sort.column:rc.recipients.sort.descending">
+                <div class="col-xs-2">
+                    <a href="/edit-recipient/{{recipient.recipient_id}}">{{recipient.recipient_name}}</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="/edit-recipient/{{recipient.recipient_id}}">{{recipient.recipient_email}}</a>
+                </div>
+                <div class="col-xs-2">
+                    <a href="/edit-recipient/{{recipient.recipient_id}}">{{recipient.recipient_phone}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
