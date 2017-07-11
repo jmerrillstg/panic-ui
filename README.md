@@ -63,7 +63,9 @@ The Angular routes are defined in **/source/js/scripts.js**
 
 ## Login Info
 The default login information for the application is
-Username: adminuser@stgconsulting.com
-Password: password
+
+**Username:** adminuser@stgconsulting.com
+
+**Password:** password
 
 On your first login you will be prompted to change your password.
