@@ -47,6 +47,12 @@ export default function ($q, $http, $window, $rootScope, $location, appConfig) {
         });
     }
 
+    function getUsers() {
+        return $http.get(appConfig.apiUrl+'/user').then(function(response) {
+            return response.data;
+        });
+    }
+
     function isAdmin(userId) {
         return this.getUser(userId).then(function(user) {
             return user.user_level === 'admin';
@@ -100,10 +106,83 @@ export default function ($q, $http, $window, $rootScope, $location, appConfig) {
             }
         );
     }
+
     function logoutUser() {
         clearToken();
         $rootScope.isLoggedIn = false;
         $location.path('/login');
+    }
+
+    function updateProfile() {
+        let defer = $q.defer();
+
+        $http({
+            method: 'PUT',
+            url: appConfig.apiUrl+'/profile',
+            data: $rootScope.user,
+            headers : {'Content-Type': 'application/json'}
+        }).then(function() {
+            defer.resolve(true);
+        }, function() {
+            defer.resolve(false);
+        }).catch(function(error) {
+            defer.reject(error);
+        });
+
+        return defer.promise;
+    }
+
+    function updateUser(userId, user) {
+        let defer = $q.defer();
+
+        $http({
+            method: 'PUT',
+            url: appConfig.apiUrl+'/user/'+userId,
+            data: {user_name: user.user_name, user_level: user.user_level, user_email: user.user_email},
+            headers : {'Content-Type': 'application/json'}
+        }).then(function() {
+            defer.resolve(true);
+        }, function() {
+            defer.resolve(false);
+        }).catch(function(error) {
+            defer.reject(error);
+        });
+
+        return defer.promise;
+    }
+
+    function addUser(user) {
+        let defer = $q.defer();
+
+        $http({
+            method: 'POST',
+            url: appConfig.apiUrl+'/user',
+            data: {user_name: user.first_name+' '+user.last_name, user_level: user.user_level, email: user.email},
+            headers : {'Content-Type': 'application/json'}
+        }).then(function() {
+            defer.resolve(true);
+        }, function() {
+            defer.resolve(false);
+        }).catch(function(error) {
+            defer.reject(error);
+        });
+
+        return defer.promise;
+    }
+
+    function deleteUser(userId) {
+        let defer = $q.defer();
+
+        $http.delete(appConfig.apiUrl+'/user/'+userId)
+        .then(function() {
+            defer.resolve(true);
+        }, function() {
+            defer.resolve(false);
+        }).catch(function(error) {
+            defer.reject(error);
+        });
+
+        return defer.promise;
     }
 
     return {
@@ -119,7 +198,12 @@ export default function ($q, $http, $window, $rootScope, $location, appConfig) {
         isAdmin: isAdmin,
         parseToken: parseToken,
         changePassword: changePassword,
-        resetPassword: resetPassword
+        resetPassword: resetPassword,
+        updateProfile: updateProfile,
+        updateUser: updateUser,
+        addUser: addUser,
+        deleteUser: deleteUser,
+        getUsers: getUsers
     };
 }
 

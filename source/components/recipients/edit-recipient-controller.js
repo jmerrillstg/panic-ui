@@ -1,23 +1,22 @@
-export default function ($http, $routeParams, loginService, appConfig) {
+export default function ($routeParams, loginService, recipientsService) {
     let erc = this;
 
     erc.error = '';
     erc.success = false;
 
-    $http.get(appConfig.apiUrl+'/recipient/'+$routeParams.id).
-    then(function(response) {
-        erc.recipient = response.data[0];
-    }, function () {
-        erc.error='Failed to retrieve recipient';
-    });
+    function getRecipient() {
+        recipientsService.getRecipient($routeParams.id)
+        .then(function(data) {
+            erc.recipient = data;
+        }, function () {
+            erc.error='Failed to retrieve recipient';
+        });
+    }
+
+    getRecipient();
 
     function updateRecipient() {
-        $http({
-            method: 'PUT',
-            url: appConfig.apiUrl+'/recipient/'+$routeParams.id,
-            data: {recipient_name: erc.recipient.recipient_name, recipient_phone: erc.recipient.recipient_phone, recipient_email: erc.recipient.recipient_email},
-            headers : {'Content-Type': 'application/json'}
-        })
+        recipientsService.updateRecipient($routeParams.id, erc.recipient)
         .then(function() {
             erc.success = true;
             erc.successMessage = 'Recipient Updated Successfully';
@@ -27,21 +26,9 @@ export default function ($http, $routeParams, loginService, appConfig) {
         });
     }
 
-    function resetPassword(email) {
-        if (loginService.resetPassword(email)) {
-            erc.success = true;
-            erc.successMessage = 'Password Reset Sent Successfully';
-            erc.error = '';
-        } else {
-            erc.success = false;
-            erc.successMessage = '';
-            erc.error = 'Password Reset Failed';
-        }
-    }
-
     function deleteRecipient() {
-        $http.delete(appConfig.apiUrl+'/recipient/'+$routeParams.id).
-        then(function() {
+        recipientsService.deleteRecipient($routeParams.id)
+        .then(function() {
             erc.success = true;
             erc.successMessage = 'Recipient Deleted Successfully';
             erc.recipient = '';
@@ -55,8 +42,8 @@ export default function ($http, $routeParams, loginService, appConfig) {
         $('#delete-recipient-modal').modal();
     }
 
+    erc.getRecipient = getRecipient;
     erc.deleteRecipient = deleteRecipient;
     erc.updateRecipient = updateRecipient;
-    erc.resetPassword = resetPassword;
     erc.initiateModal = initiateModal;
 }

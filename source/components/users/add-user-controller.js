@@ -1,16 +1,11 @@
-export default function ($http, appConfig) {
+export default function (loginService) {
     let auc = this;
 
     auc.error = '';
     auc.success = false;
 
     function addUser() {
-        $http({
-            method: 'POST',
-            url: appConfig.apiUrl+'/user',
-            data: {user_name: auc.user.first_name+' '+auc.user.last_name, user_level: auc.user.user_level, email: auc.user.email},
-            headers : {'Content-Type': 'application/json'}
-        })
+        loginService.addUser(auc.user)
         .then(function() {
             auc.success = true;
             auc.successMessage = 'User Added Successfully';

@@ -1,23 +1,11 @@
-export default function ($http, $rootScope, appConfig) {
+export default function ($rootScope, appConfig, loginService) {
     let acc = this;
 
     acc.error = '';
     acc.success = false;
 
-    $http.get(appConfig.apiUrl+'/user/'+$rootScope.userId).
-    then(function(response) {
-        acc.profile = response.data[0];
-    }, function () {
-        acc.error = 'Failed to retrieve profile';
-    });
-
-    function updateUser() {
-        $http({
-            method: 'PUT',
-            url: appConfig.apiUrl+'/profile',
-            data: acc.profile,
-            headers : {'Content-Type': 'application/json'}
-        })
+    function updateProfile() {
+        loginService.updateProfile()
         .then(function() {
             acc.success = true;
             acc.successMessage = 'User Updated Successfully';
@@ -27,5 +15,5 @@ export default function ($http, $rootScope, appConfig) {
         });
     }
 
-    acc.updateUser = updateUser;
+    acc.updateProfile = updateProfile;
 }

@@ -1,15 +1,20 @@
-export default function ($http, appConfig) {
+export default function (logService) {
     let lgc = this;
 
     lgc.error = '';
     lgc.success = false;
 
-    $http.get(appConfig.apiUrl+'/log').
-    then(function(response) {
-        lgc.log_count = response.data.count;
-        lgc.log = response.data.log;
-    }, function () {
-        lgc.error='Failed to retrieve log';
-    });
+    function getLog() {
+        logService.getLog()
+        .then(function(data) {
+            lgc.log_count = data.count;
+            lgc.log = data.log;
+        }, function () {
+            lgc.error='Failed to retrieve log';
+        });
+    }
 
+    getLog();
+
+    lgc.getLog = getLog;
 }

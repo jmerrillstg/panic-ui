@@ -1,4 +1,4 @@
-export default function ($http, appConfig) {
+export default function (recipientsService) {
     let rc = this;
 
     rc.recipients = {
@@ -8,12 +8,16 @@ export default function ($http, appConfig) {
         }
     };
 
-    $http.get(appConfig.apiUrl+'/recipient').
-    then(function(response) {
-        rc.recipients.data = response.data;
-    }, function () {
-        rc.error='Failed to retrieve recipients';
-    });
+    function getRecipients () {
+        recipientsService.getRecipients()
+        .then(function(data) {
+            rc.recipients.data = data;
+        }, function () {
+            rc.error='Failed to retrieve recipients';
+        });
+    }
+
+    getRecipients();
 
     function selectedCls(module, column) {
         return column === module.sort.column && 'sort-' + module.sort.descending;
@@ -30,4 +34,5 @@ export default function ($http, appConfig) {
 
     rc.selectedCls = selectedCls;
     rc.changeSorting = changeSorting;
+    rc.getRecipients = getRecipients;
 }

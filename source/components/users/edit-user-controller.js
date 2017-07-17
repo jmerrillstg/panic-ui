@@ -1,23 +1,22 @@
-export default function ($http, $routeParams, loginService, appConfig) {
+export default function ($routeParams, loginService) {
     let euc = this;
 
     euc.error = '';
     euc.success = false;
 
-    $http.get(appConfig.apiUrl+'/user/'+$routeParams.id).
-    then(function(response) {
-        euc.user = response.data[0];
-    }, function () {
-        euc.error='Failed to retrieve user';
-    });
+    function getUser() {
+        loginService.getUser($routeParams.id)
+        .then(function(data) {
+            euc.user = data;
+        }, function () {
+            euc.error='Failed to retrieve user';
+        });
+    }
+
+    getUser();
 
     function updateUser() {
-        $http({
-            method: 'PUT',
-            url: appConfig.apiUrl+'/user/'+$routeParams.id,
-            data: {user_name: euc.user.user_name, user_level: euc.user.user_level, user_email: euc.user.user_email},
-            headers : {'Content-Type': 'application/json'}
-        })
+        loginService.updateUser($routeParams.id, euc.user)
         .then(function() {
             euc.success = true;
             euc.successMessage = 'User Updated Successfully';
@@ -40,8 +39,8 @@ export default function ($http, $routeParams, loginService, appConfig) {
     }
 
     function deleteUser() {
-        $http.delete(appConfig.apiUrl+'/user/'+$routeParams.id).
-        then(function() {
+        loginService.deleteUser($routeParams.id)
+        .then(function() {
             euc.success = true;
             euc.successMessage = 'User Deleted Successfully';
             euc.user = '';
@@ -59,4 +58,5 @@ export default function ($http, $routeParams, loginService, appConfig) {
     euc.updateUser = updateUser;
     euc.resetPassword = resetPassword;
     euc.initiateModal = initiateModal;
+    euc.getUser = getUser;
 }

@@ -11,6 +11,7 @@ export default function (loginService) {
         loginService.changePassword(cpc.currentPassword, cpc.newPassword).then(function(result) {
             if (result) {
                 cpc.success = true;
+                cpc.successMessage = 'Password changed successfully.';
             } else {
                 cpc.error = 'Current password is invalid';
             }
